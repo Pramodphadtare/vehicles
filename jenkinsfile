@@ -1,38 +1,33 @@
 pipeline {
-agent any
- tools {
-  maven "maven_3.9.4"
-  }
-  stages {
-    stage (code compilation) {
-      steps{
-        echo "code compilation is in progress"
-        sh "mvn clean compile"
-        echo"code compilation is completed successfully"
+    agent any
 
-	  }
+    tools {
+        maven 'maven_3.9.4'
+    }
 
-	}
+    stages {
+        stage('Code Compilation') {
+            steps {
+                echo 'Code compilation is in progress'
+                sh 'mvn clean compile'
+                echo 'Code compilation completed successfully'
+            }
+        }
 
-     stage (code test) {
-      steps{
-        echo "code testing is in progress"
-        sh "mvn clean test"
-        echo"code compilation is completed successfully"
+        stage('Code Test') {
+            steps {
+                echo 'Code testing is in progress'
+                sh 'mvn clean test'
+                echo 'Code testing completed successfully'
+            }
+        }
 
-	  }
-
-	}
-
-	stage (code package) {
-      steps{
-        echo "creating jar artifact"
-        sh "mvn clean package"
-        echo"creating jar artifact successfully"
-
-	  }
-
-	}
-  }
-
+        stage('Code Package') {
+            steps {
+                echo 'Creating JAR artifact'
+                sh 'mvn clean package'
+                echo 'Creating JAR artifact completed successfully'
+            }
+        }
+    }
 }
