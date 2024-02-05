@@ -26,9 +26,9 @@ agent any
 
 	stage (code package) {
       steps{
-        echo "creating war artifact"
+        echo "creating jar artifact"
         sh "mvn clean package"
-        echo"creating war artifact successfully"
+        echo"creating jar artifact successfully"
 
 	  }
 
